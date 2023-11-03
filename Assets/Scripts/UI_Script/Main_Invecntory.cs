@@ -14,7 +14,9 @@ public class Main_Invecntory : MonoBehaviour
     }
     private void OnEnable()
     {
-        items = gameManager.items;
+        if(gameManager != null&&gameManager.items.Count>0 )
+            items = gameManager.items;
+
     }
     // Update is called once per frame
     void Update()
