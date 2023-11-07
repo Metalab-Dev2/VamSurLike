@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     string sceneName;
-    public GameObject sceneManager;
+    public GameObject sceneManagerOBJ;
     public static GameManager instance;
+    public InputManagerBase inputManager;
+    public SceneManagerBase sceneManager;
     public List<EquipItemBase> items= new List<EquipItemBase>();
     
     private void Awake()
@@ -19,26 +21,29 @@ public class GameManager : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
     }
+
     private void Start()
+    {
+        GetSceneManager();
+        Test();
+    }
+    private void Update()
     {
         
     }
     void GetSceneManager()
     {
-        sceneName = SceneManager.GetActiveScene().name;
-        switch (sceneName)
-        {
-            case "StartScene":
-                sceneManager = GameObject.Find("SartSceneManager");
-                break;
-            case "GameScene":
-                break;
-            default:
-                break;
-        }
+
     }
     public void LoadScene(string scene)
     {
         SceneManager.LoadScene(scene);
+    }
+    public void Test()
+    {
+        if(sceneManager is StartSceneManager)
+        {
+            Debug.Log(sceneManager.openUI.Count);
+        }
     }
 }
