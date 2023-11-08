@@ -4,13 +4,24 @@ using UnityEngine;
 
 public class GameSceneInputManager : InputManagerBase
 {
-    // Start is called before the first frame update
+
+    protected override InputManagerBase ReturnType()
+    {
+        return this;
+    }
+    protected override void SetInputManager()
+    {
+        if (gameManager == null)
+            gameManager = GameManager.instance;
+        gameManager.inputManager = ReturnType();
+        Debug.Log("InputManager");
+    }
     void Start()
     {
-        
+        SetInputManager();
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         

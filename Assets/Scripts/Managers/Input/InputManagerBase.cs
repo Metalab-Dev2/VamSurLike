@@ -8,12 +8,12 @@ public class InputManagerBase : MonoBehaviour
     public GameManager gameManager;
     public SceneManagerBase sceneManager;
 
-    public virtual InputManagerBase ReturnType()
+    protected virtual InputManagerBase ReturnType()
     {
         return this;
     }
 
-    public virtual void SetInputManager()
+    protected virtual void SetInputManager()
     {
         gameManager.inputManager = ReturnType();
     }

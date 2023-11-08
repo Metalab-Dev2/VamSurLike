@@ -6,8 +6,9 @@ public class SceneManagerBase : MonoBehaviour
 {
     public string sceneName;
     public GameManager gameManager;
+    public InputManagerBase inputManager;
     public List<GameObject> openUI = new List<GameObject>();
-    // Start is called before the first frame update
+    
 
     public virtual SceneManagerBase ReturnType()
     {
@@ -17,8 +18,15 @@ public class SceneManagerBase : MonoBehaviour
     {
         gameManager = GameManager.instance;
     }
-
-    public void ObjectActiveChange(GameObject go)
+    public virtual void SetInputManager()
+    {
+        
+    }
+    protected virtual void SetSceneManager()
+    {
+        gameManager.sceneManager = this;
+    }
+    public void ChangeUIActive(GameObject go)
     {
         if (go.activeSelf)
         {

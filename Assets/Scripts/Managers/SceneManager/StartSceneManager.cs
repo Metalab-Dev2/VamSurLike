@@ -2,8 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class StartSceneManager : SceneManagerBase
 {
+
+    public GameObject stageButtonPrefab;
+
     GameObject startButtonObj;
     GameObject itemShopButtonObj;
     GameObject upgradeButtonObj;
@@ -22,10 +26,6 @@ public class StartSceneManager : SceneManagerBase
     Button endButton;
     
 
-    public override SceneManagerBase ReturnType()
-    {
-        return this;
-    }
 
     void Start()
     {
@@ -33,6 +33,7 @@ public class StartSceneManager : SceneManagerBase
         SetObjects();
         SetButtonFunctions();
         ActiveFalsePanels();
+        SetStageNumber();
         if (gameManager != null)
             gameManager.sceneManager = ReturnType();
         else
@@ -42,11 +43,21 @@ public class StartSceneManager : SceneManagerBase
         }
     }
 
-    
     void Update()
     {
-        
+
     }
+
+    protected override void SetSceneManager()
+    {
+        gameManager.sceneManager = this;
+    }
+
+    public override SceneManagerBase ReturnType()
+    {
+        return this;
+    }
+    #region ObjectSetting
     void SetObjects()
     {
         startButtonObj = GameObject.Find("StartButton ");
@@ -65,6 +76,7 @@ public class StartSceneManager : SceneManagerBase
         noButtonObj = QuitPanel.transform.GetChild(1).gameObject;
         upgragePanel = GameObject.Find("UpgradePanel");
     }
+
     void SetButtonFunctions()
     {
         startButton.onClick.AddListener(OpenStageSelect);
@@ -74,6 +86,8 @@ public class StartSceneManager : SceneManagerBase
         yesButtonObj.transform.GetComponent<Button>().onClick.AddListener(QuitGame);
         noButtonObj.transform.GetComponent<Button>().onClick.AddListener(CancleQuit);
     }
+    #endregion
+
     void ActiveFalsePanels()
     {
         shopPanel.SetActive(false);
@@ -81,10 +95,17 @@ public class StartSceneManager : SceneManagerBase
         QuitPanel.SetActive(false);
         stageSelectPanel.SetActive(false);
     }
-    
+    /*
+    public void UISetActiveChange(GameObject go)
+    {
+        GameObject LinkedGO = go.transform.GetComponent<ButtonLinkOBJ>().linkedUIObj;
+        ChangeUIActive(LinkedGO);
+    }
+    */
+    #region ButtonFunction
     public void OpenStageSelect()
     {
-        ObjectActiveChange(stageSelectPanel);
+        ChangeUIActive(stageSelectPanel);
     }
     public void LoadGameScene()
     {
@@ -92,23 +113,49 @@ public class StartSceneManager : SceneManagerBase
     }
     public void OpenItemShop()
     {
-        ObjectActiveChange(shopPanel);
+        ChangeUIActive(shopPanel);
     }
+
     public void OpenUpgrade()
     {
-        ObjectActiveChange(upgragePanel);
+        ChangeUIActive(upgragePanel);
     }
+
     public void OpenQuitUI()
     {
-        ObjectActiveChange(QuitPanel);
+        ChangeUIActive(QuitPanel);
     }
+
     public void CancleQuit()
     {
-        ObjectActiveChange(QuitPanel);
+        ChangeUIActive(QuitPanel);
         Debug.Log(11);
     }
+
     public void QuitGame()
     {
         Application.Quit();
     }
+
+    public void StageButton(int SceneNumber)
+    {
+        gameManager.stage = SceneNumber;
+        SceneManager.LoadScene("GameScene");
+    }
+    #endregion
+
+    public void SetStageNumber()
+    {
+        for(int i = 0; i < gameManager.maxStage; i++)
+        {
+            GameObject go = Instantiate(stageButtonPrefab);
+            go.transform.SetParent(stageSelectPanel.transform);
+            go.transform.GetComponent<StageButton>().childNumber = i;
+            go.transform.GetComponent<Button>().onClick.AddListener(go.transform.GetComponent<StageButton>().SetStageNumber);
+            go.transform.localScale = Vector3.one;
+            
+        }
+    }
+    
+    
 }

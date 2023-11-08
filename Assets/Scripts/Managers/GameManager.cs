@@ -6,7 +6,10 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     string sceneName;
+    public int stage;
+    public int maxStage=2;
     public GameObject sceneManagerOBJ;
+    public GameObject playerOBJ;
     public static GameManager instance;
     public InputManagerBase inputManager;
     public SceneManagerBase sceneManager;
@@ -24,17 +27,13 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        GetSceneManager();
         Test();
     }
     private void Update()
     {
         
     }
-    void GetSceneManager()
-    {
 
-    }
     public void LoadScene(string scene)
     {
         SceneManager.LoadScene(scene);

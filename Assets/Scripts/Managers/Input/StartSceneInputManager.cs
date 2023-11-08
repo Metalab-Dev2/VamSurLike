@@ -6,11 +6,11 @@ public class StartSceneInputManager : InputManagerBase
 {
 
 
-    public override InputManagerBase ReturnType()
+    protected override InputManagerBase ReturnType()
     {
         return this;
     }
-    public override void SetInputManager()
+    protected override void SetInputManager()
     {
         if (gameManager == null)
             gameManager = GameManager.instance;
