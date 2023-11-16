@@ -7,7 +7,7 @@ public class StartSceneManager : SceneManagerBase
 {
 
     public GameObject stageButtonPrefab;
-
+    
     GameObject startButtonObj;
     GameObject itemShopButtonObj;
     GameObject upgradeButtonObj;
@@ -45,7 +45,7 @@ public class StartSceneManager : SceneManagerBase
 
     void Update()
     {
-
+        
     }
 
     protected override void SetSceneManager()

@@ -31,7 +31,6 @@ public class SceneManagerBase : MonoBehaviour
         if (go.activeSelf)
         {
             go.SetActive(false);
-            Debug.Log(go.name);
             openUI.Remove(go);
         }
         else if (!go.activeSelf)
