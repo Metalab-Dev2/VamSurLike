@@ -12,13 +12,13 @@ public class SkillBase : MonoBehaviour
     {
         playerState.OnInputSpace.AddListener(SkillActive);
     }
+    public virtual void SkillInitialize()
+    {
+        Debug.Log("SetSkillData");
+    }
     public void SkillActive()
     {
 
-    }
-    private void Start()
-    {
-        
     }
     virtual public void SetSkill()
     {

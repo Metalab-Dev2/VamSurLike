@@ -14,7 +14,8 @@ public class GameManager : MonoBehaviour
     public InputManagerBase inputManager;
     public SceneManagerBase sceneManager;
     public List<EquipItemBase> items= new List<EquipItemBase>();
-    
+    public Dictionary<string, SkillBase> inGameSkillData = new Dictionary<string, SkillBase>();
+    public List<Dictionary<string, object>> skillData = new List<Dictionary<string, object>>();
     private void Awake()
     {
         if (GameManager.instance == null)
@@ -43,6 +44,25 @@ public class GameManager : MonoBehaviour
         if(sceneManager is StartSceneManager)
         {
             Debug.Log(sceneManager.openUI.Count);
+        }
+    }
+    public void InGameSkillDataInitialize()
+    {
+        AddSkillToDictionary("Slash", CreateSkill<Slash>());
+        AddSkillToDictionary("Around", CreateSkill<Around>());
+        //스킬 추가 후 이곳에서 데이터 추가
+    }
+    public T CreateSkill<T>() where T:SkillBase,new()
+    {
+        T skill = new T();
+        skill.SkillInitialize();
+        return skill;
+    }
+    public void AddSkillToDictionary(string key,SkillBase skill)
+    {
+        if (!inGameSkillData.ContainsKey(key))
+        {
+            inGameSkillData.Add(key, skill);
         }
     }
 }

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ActiveSkills : SkillBase
 {
+    int _BaseDamage;
+    int damage;
+    int index;
     public float _BaseAttackCycle;
     public float attackCycle;
     public float _BaseAttackRange;
@@ -12,9 +15,19 @@ public class ActiveSkills : SkillBase
     public float objectSize;
     protected SkillBase skill_Script;
     protected List<GameObject> skillObject;
+    GameManager gameManager;
     public virtual void SkillMove()
     {
-
+        
+    }
+    public virtual void InitiateSkill()
+    {
+        name = gameManager.skillData[index]["name"].ToString();
+        _BaseAttackCycle = (float)gameManager.skillData[index]["BaseAttackCycle"];
+        _BaseAttackRange = (float)gameManager.skillData[index]["BaseAttackRange"];
+        _BaseDamage = (int)gameManager.skillData[index]["Damage"];
+        Debug.Log("To do");
+        Debug.Log("SetSkillData");
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -58,10 +71,6 @@ public class Around : ActiveSkills
             temp.y = temp.y * Mathf.Sin((360 * i / skillObject.Count)+Time.time);
             skillObject[i].transform.position = temp;
         }
-
-
-
-
     }
 
 }

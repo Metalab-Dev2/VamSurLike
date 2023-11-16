@@ -8,6 +8,7 @@ public class PlayerState : MonoBehaviour
     public float base_MoveSpeed;
     public float moveSpeed;
     public UnityEvent OnInputSpace;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class PlayerState : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             OnInputSpace.Invoke();
+           
         }
     }
 }
