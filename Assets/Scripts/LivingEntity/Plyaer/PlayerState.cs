@@ -8,7 +8,7 @@ public class PlayerState : MonoBehaviour
     public float base_MoveSpeed;
     public float moveSpeed;
     public UnityEvent OnInputSpace;
-    
+    public Dictionary<GameObject, float> hitObj;
     // Start is called before the first frame update
     void Start()
     {

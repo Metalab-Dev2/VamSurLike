@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     public List<EquipItemBase> items= new List<EquipItemBase>();
     public Dictionary<string, SkillBase> inGameSkillData = new Dictionary<string, SkillBase>();
     public List<Dictionary<string, object>> skillData = new List<Dictionary<string, object>>();
+    public int test;
     private void Awake()
     {
         if (GameManager.instance == null)
@@ -32,7 +34,8 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        
+        test = inGameSkillData.Count;
+        Debug.Log(inGameSkillData["Slash"].skillName);
     }
 
     public void LoadScene(string scene)
@@ -46,12 +49,14 @@ public class GameManager : MonoBehaviour
             Debug.Log(sceneManager.openUI.Count);
         }
     }
+    /*
     public void InGameSkillDataInitialize()
     {
         AddSkillToDictionary("Slash", CreateSkill<Slash>());
         AddSkillToDictionary("Around", CreateSkill<Around>());
         //스킬 추가 후 이곳에서 데이터 추가
     }
+    
     public T CreateSkill<T>() where T:SkillBase,new()
     {
         T skill = new T();
@@ -60,9 +65,11 @@ public class GameManager : MonoBehaviour
     }
     public void AddSkillToDictionary(string key,SkillBase skill)
     {
+        
         if (!inGameSkillData.ContainsKey(key))
         {
             inGameSkillData.Add(key, skill);
         }
     }
+    */
 }
