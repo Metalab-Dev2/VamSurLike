@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class MonsterState : LivingEntity
 {
     public Dictionary<SkillBase, float> damagedTime;
     GameObject playerObj;
     PlayerState player;
+
+    
     // Start is called before the first frame update
     public void LastDamagedTime(SkillBase skill)
     {

@@ -6,7 +6,13 @@ public class GameSceneManager : SceneManagerBase
 {
     public GameObject tileMapPrefab;
     public GameObject grid;
-
+    public GameObject monsterPrefab;
+    Vector2 playerPos;
+    float minPos = 5;
+    float maxPos = 10;
+    public float lastGenTime;
+    public float genTime=0.2f;
+   
     public override SceneManagerBase ReturnType()
     {
         return this;
@@ -25,11 +31,7 @@ public class GameSceneManager : SceneManagerBase
         SetSceneManager();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
 
     public void GenerateTileMap(Vector2 mapCenterPos)
@@ -53,8 +55,24 @@ public class GameSceneManager : SceneManagerBase
         }
         Debug.Log("MapGenerate");
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    
+    public void GenerateMonster()
     {
         
+        if (Time.time >= lastGenTime + genTime)
+        {
+            Vector2 temp = SetRandomPos();
+            GameObject go = Instantiate(monsterPrefab);
+        }
+    }
+
+    public Vector2 SetRandomPos()
+    {
+        Vector2 randomPos = Vector2.zero;
+        playerPos = gameManager.playerOBJ.transform.position;
+        randomPos.x = playerPos.x + Random.Range(minPos, maxPos);
+        randomPos.y = playerPos.y + Random.Range(minPos, maxPos);
+        return randomPos;
     }
 }

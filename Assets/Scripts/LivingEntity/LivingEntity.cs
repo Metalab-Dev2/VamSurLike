@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class LivingEntity : MonoBehaviour
 {
     protected int maxHp;
@@ -10,6 +10,8 @@ public class LivingEntity : MonoBehaviour
     protected float damage;
     private bool isAlive=true;
     float hitDelayTime;
+    protected UnityEvent damagedEvents;
+    protected UnityEvent hitEvents;
     public virtual void Damaged(int damage)
     {
         currentHp -= damage;
