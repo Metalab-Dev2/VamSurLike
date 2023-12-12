@@ -12,7 +12,10 @@ public class InputManagerBase : MonoBehaviour
     {
         return this;
     }
+    public virtual void AddEvent()
+    {
 
+    }
     protected virtual void SetInputManager()
     {
         gameManager.inputManager = ReturnType();

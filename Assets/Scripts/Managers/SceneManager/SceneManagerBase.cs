@@ -14,11 +14,15 @@ public class SceneManagerBase : MonoBehaviour
     {
         return this;
     }
-    public void SetGameManager()
+    protected void SetGameManager()
     {
         gameManager = GameManager.instance;
     }
-    public virtual void SetInputManager()
+    public virtual void AddEvent()
+    {
+
+    }
+    protected virtual void SetInputManager()
     {
         
     }

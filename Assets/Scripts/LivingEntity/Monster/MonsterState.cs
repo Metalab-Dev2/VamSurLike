@@ -7,8 +7,24 @@ public class MonsterState : LivingEntity
     public Dictionary<SkillBase, float> damagedTime;
     GameObject playerObj;
     PlayerState player;
-
+    Vector2 moveTo;
     
+
+    void Start()
+    {
+        SetPlyaerInfo();
+        
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        CalculateMoveTo();
+    }
+    void CalculateMoveTo()
+    {
+        moveTo = (player.transform.position - this.gameObject.transform.position).normalized;
+        transform.Translate(moveTo * Time.deltaTime * moveSpeed);
+    }
     // Start is called before the first frame update
     public void LastDamagedTime(SkillBase skill)
     {
@@ -24,7 +40,7 @@ public class MonsterState : LivingEntity
     
     public void SetPlyaerInfo()
     {
-        playerObj = GameObject.FindWithTag("Plyaer");
+        playerObj = GameManager.instance.playerOBJ;
         player = playerObj.transform.GetComponent<PlayerState>();
     }
     protected override void Dead()
@@ -33,14 +49,5 @@ public class MonsterState : LivingEntity
         Debug.Log("Need To Add AssetBundle Unload   //  MonsterStateScript");
         Debug.Log("Need To Add DeadFunction     //  MonsterStateScript");
     }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

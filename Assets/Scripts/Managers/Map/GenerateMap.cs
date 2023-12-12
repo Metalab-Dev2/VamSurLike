@@ -20,7 +20,16 @@ public class GenerateMap : MonoBehaviour
     {
         
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            if (gameSceneManager == null)
+                gameSceneManager = (GameSceneManager)GameManager.instance.sceneManager;
 
+            gameSceneManager.GenerateTileMap(this.gameObject.transform.position);
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.tag == "Player")

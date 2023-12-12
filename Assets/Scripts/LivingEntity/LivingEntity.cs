@@ -12,6 +12,7 @@ public class LivingEntity : MonoBehaviour
     float hitDelayTime;
     protected UnityEvent damagedEvents;
     protected UnityEvent hitEvents;
+    protected float moveSpeed=2f;
     public virtual void Damaged(int damage)
     {
         currentHp -= damage;

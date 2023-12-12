@@ -10,7 +10,6 @@ public class SkillBase : MonoBehaviour
     protected Vector2 front;
     public void AddEvent()
     {
-        playerState.OnInputSpace.AddListener(SkillActive);
         Debug.Log("Todo!");
     }
     public virtual void SkillInitialize()
