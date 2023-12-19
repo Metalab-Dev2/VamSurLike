@@ -7,23 +7,24 @@ public class MonsterState : LivingEntity
     public Dictionary<SkillBase, float> damagedTime;
     GameObject playerObj;
     PlayerState player;
+    Rigidbody2D myRigidbody;
     Vector2 moveTo;
     
 
     void Start()
     {
         SetPlyaerInfo();
-        
+        myRigidbody = transform.GetComponent<Rigidbody2D>();
+        moveSpeed = 5f;
     }
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        //CalculateMoveTo();
+        CalculateMoveTo();
     }
     void CalculateMoveTo()
     {
         moveTo = (player.transform.position - this.gameObject.transform.position).normalized;
-        transform.Translate(moveTo * Time.deltaTime * moveSpeed);
+        myRigidbody.velocity = moveTo * moveSpeed;
     }
     // Start is called before the first frame update
     public void LastDamagedTime(SkillBase skill)

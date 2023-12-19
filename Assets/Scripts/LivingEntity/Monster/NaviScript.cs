@@ -10,13 +10,18 @@ public class NaviScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myNavi = transform.GetComponent<NavMeshAgent>();
+        //myNavi = transform.GetComponent<NavMeshAgent>();
         player = GameManager.instance.playerOBJ;
     }
 
     // Update is called once per frame
     void Update()
     {
-        myNavi.SetDestination(player.transform.position);
+        if (player != null)
+        {
+            //myNavi.SetDestination(player.transform.position);
+            //myNavi.Move(player.transform.position);
+        }
+        
     }
 }

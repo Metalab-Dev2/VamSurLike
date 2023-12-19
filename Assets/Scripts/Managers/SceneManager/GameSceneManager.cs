@@ -12,8 +12,8 @@ public class GameSceneManager : SceneManagerBase
     public GameObject playerPrefab;
     public GameObject playerObj;
     [SerializeField] Vector2 playerPos;
-    float minPos = 5;
-    float maxPos = 10;
+    float minPos = 1;
+    float maxPos = 5;
     public float lastGenTime;
     public float genTime = 1f;
 
@@ -69,7 +69,7 @@ public class GameSceneManager : SceneManagerBase
     public void TileMapBake(GameObject go)
     {
         NavMeshSurface tileMapSurfase = go.transform.GetComponent<NavMeshSurface>();
-        if(tileMapSurfase == null)
+        if (tileMapSurfase == null)
         {
             tileMapSurfase = go.transform.GetComponent<NavMeshSurface>();
         }
@@ -82,7 +82,7 @@ public class GameSceneManager : SceneManagerBase
         if (Time.time >= lastGenTime + genTime)
         {
             Vector2 temp = SetRandomPos();
-            GameObject go = Instantiate(monsterPrefab, new Vector3(temp.x, temp.y, 0), Quaternion.identity);
+            GameObject go = Instantiate(monsterPrefab, new Vector3(temp.x, temp.y, -1), Quaternion.identity);
             lastGenTime = Time.time;
         }
     }
@@ -91,10 +91,10 @@ public class GameSceneManager : SceneManagerBase
     {
         Vector2 randomPos = Vector2.zero;
         playerPos = playerObj.transform.position;
-        int temp = Random.Range(-1, 2);
-        randomPos.x = playerPos.x + temp * (Random.Range(minPos, maxPos));
-        temp = Random.Range(-1, 2);
-        randomPos.y = playerPos.y + temp * (Random.Range(minPos, maxPos));
+        int angle = Random.Range(0, 360);
+        float temp = Random.Range(minPos, maxPos);
+        randomPos.x = playerPos.x + (temp * Mathf.Cos(angle));
+        randomPos.y = playerPos.y + (temp * Mathf.Sin(angle));
         return randomPos;
     }
 
