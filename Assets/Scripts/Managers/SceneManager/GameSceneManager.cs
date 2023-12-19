@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.AI.Navigation;
 using UnityEngine;
-
+using UnityEngine.AI;
 public class GameSceneManager : SceneManagerBase
 {
     GameSceneInputManager inputManager;
@@ -59,12 +60,21 @@ public class GameSceneManager : SceneManagerBase
 
                 GameObject go = Instantiate(tileMapPrefab, targetPos, Quaternion.identity);
                 go.transform.SetParent(grid.transform);
+                //TileMapBake(go);
 
             }
         }
         Debug.Log("MapGenerate");
     }
-
+    public void TileMapBake(GameObject go)
+    {
+        NavMeshSurface tileMapSurfase = go.transform.GetComponent<NavMeshSurface>();
+        if(tileMapSurfase == null)
+        {
+            tileMapSurfase = go.transform.GetComponent<NavMeshSurface>();
+        }
+        tileMapSurfase.BuildNavMesh();
+    }
 
     public void GenerateMonster()
     {
@@ -72,7 +82,7 @@ public class GameSceneManager : SceneManagerBase
         if (Time.time >= lastGenTime + genTime)
         {
             Vector2 temp = SetRandomPos();
-            GameObject go = Instantiate(monsterPrefab, new Vector3(temp.x, temp.y, -1), Quaternion.identity);
+            GameObject go = Instantiate(monsterPrefab, new Vector3(temp.x, temp.y, 0), Quaternion.identity);
             lastGenTime = Time.time;
         }
     }

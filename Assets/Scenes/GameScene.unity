@@ -454,9 +454,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5184426971177139999, guid: 87951ea97a668804bac6e39a8fab72f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279016464823427899, guid: 87951ea97a668804bac6e39a8fab72f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 6078290462979130370, guid: 87951ea97a668804bac6e39a8fab72f2, type: 3}
       propertyPath: m_Name
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6078290462979130370, guid: 87951ea97a668804bac6e39a8fab72f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6818652744105089973, guid: 87951ea97a668804bac6e39a8fab72f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826422221411380434, guid: 87951ea97a668804bac6e39a8fab72f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 6960431732063462962, guid: 87951ea97a668804bac6e39a8fab72f2, type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: 0abd5e6643597ac468a104d234e0d514, type: 2}
+    - target: {fileID: 7472730589299090242, guid: 87951ea97a668804bac6e39a8fab72f2, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3393063254537983797, guid: 87951ea97a668804bac6e39a8fab72f2, type: 3}

@@ -18,7 +18,7 @@ public class MonsterState : LivingEntity
     // Update is called once per frame
     void Update()
     {
-        CalculateMoveTo();
+        //CalculateMoveTo();
     }
     void CalculateMoveTo()
     {
