@@ -4,22 +4,24 @@ using UnityEngine;
 using System;
 public class ActiveSkills : SkillBase
 {
-    
-    int _BaseDamage;
-    int damage;
-    int index;
+
+    public int _BaseDamage;
+    public int damage;
+    public int index;
     public float _BaseAttackCycle;
     public float attackCycle;
     public float _BaseAttackRange;
     public float attackRange;
     public float _BaseobjectSize;
     public float objectSize;
+    public int _BaseObjectNumber;
+    public int ObjectNumber;
     protected SkillBase skill_Script;
     protected List<GameObject> skillObject;
     GameManager gameManager;
     public virtual void SkillMove()
     {
-        
+
     }
     public void AddDictionary()
     {
@@ -28,15 +30,15 @@ public class ActiveSkills : SkillBase
         // GameManager의 inGameSkillData에 클래스 이름으로 들어가기 때문에 달라지면 딕셔너리로 불러올 수 없음!
         gameManager = GameManager.instance;
         skillName = this.GetType().Name;
-        if(skillName == "ActiveSkills")
+        if (skillName == "ActiveSkills")
         {
             return;
         }
-        if (!gameManager.inGameSkillData.ContainsKey(skillName))
+        if (!gameManager.activeSkillData.ContainsKey(skillName))
         {
-            gameManager.inGameSkillData.Add(skillName, this);
+            gameManager.activeSkillData.Add(skillName, this);
         }
-        
+
         Debug.Log("To do    //  ActiveSkills Script");
         Debug.Log("SetSkillData");
         Debug.Log(skillName);
@@ -51,6 +53,6 @@ public class ActiveSkills : SkillBase
         {
             return;
         }
-        
+
     }
 }
