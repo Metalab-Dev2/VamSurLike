@@ -17,16 +17,18 @@ public class MonsterState : LivingEntity
         myRigidbody = transform.GetComponent<Rigidbody2D>();
         moveSpeed = 5f;
     }
+
     private void FixedUpdate()
     {
         CalculateMoveTo();
     }
+
     void CalculateMoveTo()
     {
         moveTo = (player.transform.position - this.gameObject.transform.position).normalized;
         myRigidbody.velocity = moveTo * moveSpeed;
     }
-    // Start is called before the first frame update
+    
     public void LastDamagedTime(SkillBase skill)
     {
         if (!damagedTime.ContainsKey(skill))
@@ -44,6 +46,7 @@ public class MonsterState : LivingEntity
         playerObj = GameManager.instance.playerOBJ;
         player = playerObj.transform.GetComponent<PlayerState>();
     }
+
     protected override void Dead()
     {
         player.hitObj.Remove(this.gameObject);

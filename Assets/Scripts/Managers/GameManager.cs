@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public SceneManagerBase sceneManager;
     public List<EquipItemBase> items= new List<EquipItemBase>();
     public Dictionary<string, ActiveSkills> activeSkillData = new Dictionary<string, ActiveSkills>();
+    public Dictionary<string, FunctionBase> functions = new Dictionary<string, FunctionBase>();
     public List<Dictionary<string, object>> skillData = new List<Dictionary<string, object>>();
     public int test;
     private void Awake()

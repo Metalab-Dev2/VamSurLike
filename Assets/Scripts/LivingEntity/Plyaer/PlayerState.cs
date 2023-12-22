@@ -9,6 +9,7 @@ public class PlayerState : MonoBehaviour
     public float moveSpeed = 2f;
     SpriteRenderer myRenderer;
     public Dictionary<GameObject, float> hitObj;
+    public List<ActiveSkills> skills = new List<ActiveSkills>();
     // Start is called before the first frame update
     void Start()
     {
