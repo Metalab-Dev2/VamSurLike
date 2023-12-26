@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class MonsterState : LivingEntity
 {
     public Dictionary<SkillBase, float> damagedTime;
+    public float moveSpeed;
     GameObject playerObj;
     PlayerState player;
     Rigidbody2D myRigidbody;

@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.Events;
 public class LivingEntity : MonoBehaviour
 {
-    protected int maxHp;
-    protected float currentHp;
+    public int maxHp;
+    public int currentHp;
     protected int _BaseDamage;
     protected float damage;
     private bool isAlive=true;
     float hitDelayTime;
     protected UnityEvent damagedEvents;
     protected UnityEvent hitEvents;
-    protected float moveSpeed=2f;
+    protected float base_MoveSpeed=2f;
     public virtual void Damaged(int damage)
     {
         currentHp -= damage;
