@@ -8,14 +8,17 @@ public class ActiveSkills : SkillBase
     public int _BaseDamage;
     public int damage;
     public int index;
+    public int level;
+    public int _BaseObjectNumber;
+    public int ObjectNumber;
+
     public float _BaseAttackCycle;
     public float attackCycle;
     public float _BaseAttackRange;
     public float attackRange;
     public float _BaseobjectSize;
     public float objectSize;
-    public int _BaseObjectNumber;
-    public int ObjectNumber;
+    
     protected SkillBase skill_Script;
     protected List<GameObject> skillObject;
     GameManager gameManager;
@@ -34,9 +37,9 @@ public class ActiveSkills : SkillBase
         {
             return;
         }
-        if (!gameManager.activeSkillData.ContainsKey(skillName))
+        if (!DataManager.instance.activeSkillData.ContainsKey(skillName))
         {
-            gameManager.activeSkillData.Add(skillName, this);
+            DataManager.instance.activeSkillData.Add(skillName, this);
         }
 
         Debug.Log("To do    //  ActiveSkills Script");

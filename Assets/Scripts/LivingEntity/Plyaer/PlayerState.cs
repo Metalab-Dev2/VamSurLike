@@ -8,13 +8,19 @@ public class PlayerState : LivingEntity
     public float moveSpeed;
     SpriteRenderer myRenderer;
     public Dictionary<GameObject, float> hitObj;
-    public List<ActiveSkills> skills = new List<ActiveSkills>();
+    public Dictionary<string,ActiveSkills> skills = new Dictionary<string, ActiveSkills>();
     public GameObject skillObjectPrefab;
+    int level;
+    int maxEXP;
+    int currentEXP;
+    public float hitTime=1f;
     // Start is called before the first frame update
     void Start()
     {
         myRenderer = this.gameObject.transform.GetComponent<SpriteRenderer>();
         moveSpeed = 3f;
+        maxEXP = 10;
+        level = 1;
     }
 
     // Update is called once per frame
@@ -33,5 +39,23 @@ public class PlayerState : LivingEntity
         {
             myRenderer.flipX = false;
         }
+    }
+    void LevelUp()
+    {
+        if (currentEXP >= maxEXP)
+        {
+            level++;
+            MaxExpSetting();
+            if (GameManager.instance.sceneManager is GameSceneManager)
+            {
+                GameSceneManager gameSceneManager = (GameSceneManager)GameManager.instance.sceneManager;
+                gameSceneManager.UserLevelUp();
+            }
+        }
+    }
+    void MaxExpSetting()
+    {
+        currentEXP -= maxEXP;
+        maxEXP += 10;
     }
 }

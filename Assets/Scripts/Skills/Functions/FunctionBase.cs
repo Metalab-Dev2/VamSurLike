@@ -22,7 +22,7 @@ public class FunctionBase : MonoBehaviour
         }
         else
         {
-            gameManager.functions.Add(functionName, this);
+            DataManager.instance.functions.Add(functionName, this);
         }
         Debug.Log("To do // Fuction Test");
         Debug.Log(functionName);

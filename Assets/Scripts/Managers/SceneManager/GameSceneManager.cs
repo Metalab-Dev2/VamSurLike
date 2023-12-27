@@ -3,24 +3,39 @@ using System.Collections.Generic;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
-public class GameSceneManager : SceneManagerBase
+using UnityEngine.UI;
+
+public class GameSceneManager : SceneManagerBase,IPlayerProvider
 {
-    GameSceneInputManager inputManager;
+    public GameObject player { get; set; }
     public GameObject tileMapPrefab;
     public GameObject grid;
     public GameObject monsterPrefab;
     public GameObject playerPrefab;
-    public GameObject playerObj;
+    //public GameObject playerObj;
     [SerializeField] Vector2 playerPos;
+    PlayerState playerState;
+    
     float minPos = 1;
     float maxPos = 5;
     public float lastGenTime;
     public float genTime = 1f;
+    int playerLevel;
 
+    GameObject Canvas;
+    public GameObject levelUpPanel;
+    public GameObject skillUpPanel;
+    public GameObject infoPanel;
+    //List<GameObject> openUI;
+    List<Button> skillUpButton = new List<Button>();
+    List<GameObject> skillUpButtonObject = new List<GameObject>();
     private void Start()
     {
         genTime = 1f;
+        playerState = player.transform.GetComponent<PlayerState>();
+        SetUIObjects();
     }
+    #region InitiateGame
     public override SceneManagerBase ReturnType()
     {
         return this;
@@ -34,13 +49,15 @@ public class GameSceneManager : SceneManagerBase
     {
         if (GameManager.instance.playerOBJ == null)
         {
-            playerObj = Instantiate(playerPrefab, new Vector3(0, 0, -1), Quaternion.identity);
-            GameManager.instance.playerOBJ = playerObj;
+            player = Instantiate(playerPrefab, new Vector3(0, 0, -1), Quaternion.identity);
+            GameManager.instance.playerOBJ = player;
+            GameManager.instance.playerState = player.transform.GetComponent<PlayerState>();
             SetInputManager();
-            if (inputManager is GameSceneInputManager)
+            if (inputManager is IPlayerProvider playerProvider)
             {
-                inputManager.player = GameManager.instance.playerOBJ;
-                inputManager.player = playerObj;
+                playerProvider.player = GameManager.instance.playerOBJ;
+                //inputManager.player = GameManager.instance.playerOBJ;
+                //inputManager.player = playerObj;
             }
         }
     }
@@ -66,15 +83,7 @@ public class GameSceneManager : SceneManagerBase
         }
         Debug.Log("MapGenerate");
     }
-    public void TileMapBake(GameObject go)
-    {
-        NavMeshSurface tileMapSurfase = go.transform.GetComponent<NavMeshSurface>();
-        if (tileMapSurfase == null)
-        {
-            tileMapSurfase = go.transform.GetComponent<NavMeshSurface>();
-        }
-        tileMapSurfase.BuildNavMesh();
-    }
+
 
     public void GenerateMonster()
     {
@@ -90,7 +99,7 @@ public class GameSceneManager : SceneManagerBase
     public Vector2 SetRandomPos()
     {
         Vector2 randomPos = Vector2.zero;
-        playerPos = playerObj.transform.position;
+        playerPos = player.transform.position;
         int angle = Random.Range(0, 360);
         float temp = Random.Range(minPos, maxPos);
         randomPos.x = playerPos.x + (temp * Mathf.Cos(angle));
@@ -106,4 +115,70 @@ public class GameSceneManager : SceneManagerBase
         }
 
     }
+    #endregion
+    #region ButtonSet
+    public void SetUIObjects()
+    {
+        Canvas = GameObject.Find("Canvas");
+        levelUpPanel = Canvas.transform.GetChild(0).gameObject;
+        infoPanel = Canvas.transform.GetChild(0).transform.GetChild(0).gameObject;
+        skillUpPanel = Canvas.transform.GetChild(0).transform.GetChild(1).gameObject;
+        for(int i = 0; i < skillUpPanel.transform.childCount; i++)
+        {
+            skillUpButton.Add(skillUpPanel.transform.GetChild(i).transform.GetChild(0).GetComponent<Button>());
+            Debug.Log(skillUpPanel.transform.GetChild(i).name);
+            skillUpButtonObject.Add(skillUpPanel.transform.GetChild(i).gameObject);
+        }
+        for(int i = 0; i < skillUpButton.Count; i++)
+        {
+            Debug.Log("ButtonCount : "+skillUpButton.Count);
+            Debug.Log(skillUpButton[i]);
+            skillUpButton[i].onClick.AddListener(SkillUpButtonAction);
+        }
+    }
+    
+    public void SkillUpButtonAction()
+    {
+        levelUpPanel.SetActive(false);
+        Time.timeScale =1;
+    }
+    #endregion
+    #region LevelUp
+    public void SkillNameSet()
+    {
+        if (false)
+        {
+            Debug.Log("Chnage To Users SkillNumbers");
+        }
+
+        else
+        {
+            List<string> skillNames = new List<string>(DataManager.instance.activeSkillData.Keys);
+            for (int i = 0; i < skillUpButton.Count; i++)
+            {
+                if (skillNames.Count > 0)
+                {
+                    int temp = Random.Range(0, skillNames.Count);
+                    skillUpButton[i].transform.GetComponent<SkillUpButton>().skillName = skillNames[temp];
+                    skillNames.RemoveAt(temp);
+                }
+            }
+        }
+    }
+    public void UserLevelUp()
+    {
+        Time.timeScale = 0;
+        SkillNameSet();
+        levelUpPanel.SetActive(true);
+    }
+    public void ButtonSkillSet()
+    {
+
+    }
+
+    public void SkillUpButtonIconSet()
+    {
+
+    }
+    #endregion
 }

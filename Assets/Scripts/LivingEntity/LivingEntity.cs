@@ -7,7 +7,7 @@ public class LivingEntity : MonoBehaviour
     public int maxHp;
     public int currentHp;
     protected int _BaseDamage;
-    protected float damage;
+    protected int damage;
     private bool isAlive=true;
     float hitDelayTime;
     protected UnityEvent damagedEvents;

@@ -11,7 +11,7 @@ public class ObjectScript : MonoBehaviour
     private void Start()
     {
         gameManager = GameManager.instance;
-        skill = gameManager.activeSkillData["Slash"];
+        skill = DataManager.instance.activeSkillData["Slash"];
     }
     private void Update()
     {
@@ -26,6 +26,6 @@ public class ObjectScript : MonoBehaviour
         {
             gameManager = GameManager.instance;
         }
-        skill = gameManager.activeSkillData[skillName];
+        skill = DataManager.instance.activeSkillData[skillName];
     }
 }

@@ -54,5 +54,54 @@ public class MonsterState : LivingEntity
         Debug.Log("Need To Add AssetBundle Unload   //  MonsterStateScript");
         Debug.Log("Need To Add DeadFunction     //  MonsterStateScript");
     }
-    
+    public override void Damaged(int damage)
+    {
+        base.Damaged(damage);
+    }
+
+    void IsHitable()
+    {
+        if (player.hitObj.ContainsKey(this.gameObject))
+        {
+            if (player.hitObj[this.gameObject] + player.hitTime <= Time.time)
+            {
+                player.Damaged(damage);
+            }
+
+
+        }
+        else
+        {
+            player.hitObj.Add(this.gameObject, Time.time);
+            player.Damaged(damage);
+        }
+    }
+
+    void IsDamagedable()
+    {
+
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if(collision.transform.tag == "Player")
+        {
+            IsHitable();
+        }
+        else if(collision.transform.tag == "Skill")
+        {
+            IsDamagedable();
+        }
+        if (player.hitObj.ContainsKey(this.gameObject))
+        {
+
+
+
+        }
+        else
+        {
+
+        }
+    }
+
 }

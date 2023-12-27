@@ -2,15 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameSceneInputManager : InputManagerBase
+public interface IPlayerProvider
+{
+    GameObject player { get; set; }
+}
+
+
+public class GameSceneInputManager : InputManagerBase,IPlayerProvider
 {
     [SerializeField]float moveX;
     [SerializeField]float moveY;
     public Vector2 moveTo = Vector2.zero;
-    public GameObject player;
+    public GameObject player { get; set; }
     PlayerState playerState;
     
-
     protected override InputManagerBase ReturnType()
     {
         return this;
@@ -20,6 +25,7 @@ public class GameSceneInputManager : InputManagerBase
     {
         SetInputManager();
     }
+
     protected override void SetInputManager()
     {
         if (gameManager == null)
@@ -27,6 +33,7 @@ public class GameSceneInputManager : InputManagerBase
         gameManager.inputManager = ReturnType();
         Debug.Log("InputManager");
     }
+
     public void MoveTo()
     {
         moveX = Input.GetAxis("Horizontal");

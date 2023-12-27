@@ -333,14 +333,15 @@ MonoBehaviour:
   _BaseDamage: 0
   damage: 0
   index: 0
+  level: 0
+  _BaseObjectNumber: 0
+  ObjectNumber: 0
   _BaseAttackCycle: 0
   attackCycle: 0
   _BaseAttackRange: 0
   attackRange: 0
   _BaseobjectSize: 0
   objectSize: 0
-  _BaseObjectNumber: 0
-  ObjectNumber: 0
 --- !u!114 &80291552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -357,14 +358,15 @@ MonoBehaviour:
   _BaseDamage: 0
   damage: 0
   index: 0
+  level: 0
+  _BaseObjectNumber: 0
+  ObjectNumber: 0
   _BaseAttackCycle: 0
   attackCycle: 0
   _BaseAttackRange: 0
   attackRange: 0
   _BaseobjectSize: 0
   objectSize: 0
-  _BaseObjectNumber: 0
-  ObjectNumber: 0
 --- !u!4 &80291553
 Transform:
   m_ObjectHideFlags: 0
@@ -396,14 +398,15 @@ MonoBehaviour:
   _BaseDamage: 0
   damage: 0
   index: 0
+  level: 0
+  _BaseObjectNumber: 0
+  ObjectNumber: 0
   _BaseAttackCycle: 0
   attackCycle: 0
   _BaseAttackRange: 0
   attackRange: 0
   _BaseobjectSize: 0
   objectSize: 0
-  _BaseObjectNumber: 0
-  ObjectNumber: 0
 --- !u!1 &158787741
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,6 +1489,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 854747816}
   m_CullTransparentMesh: 1
+--- !u!1 &899917356
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 899917358}
+  - component: {fileID: 899917357}
+  m_Layer: 0
+  m_Name: DataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &899917357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899917356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a758e11f5c9400c48ba92b2f044a70a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &899917358
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 899917356}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.24529812, y: 1.0205923, z: 0.90896106}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &987591217
 GameObject:
   m_ObjectHideFlags: 0
@@ -2104,9 +2151,12 @@ MonoBehaviour:
   maxStage: 2
   sceneManagerOBJ: {fileID: 0}
   playerOBJ: {fileID: 0}
+  playerState: {fileID: 0}
   inputManager: {fileID: 0}
   sceneManager: {fileID: 0}
+  totalGold: 0
   test: 0
+  language: En
 --- !u!4 &1355987616
 Transform:
   m_ObjectHideFlags: 0
@@ -2151,14 +2201,15 @@ MonoBehaviour:
   _BaseDamage: 0
   damage: 0
   index: 0
+  level: 0
+  _BaseObjectNumber: 0
+  ObjectNumber: 0
   _BaseAttackCycle: 0
   attackCycle: 0
   _BaseAttackRange: 0
   attackRange: 0
   _BaseobjectSize: 0
   objectSize: 0
-  _BaseObjectNumber: 0
-  ObjectNumber: 0
 --- !u!1 &1395201352
 GameObject:
   m_ObjectHideFlags: 0
@@ -3335,3 +3386,4 @@ SceneRoots:
   - {fileID: 831273381}
   - {fileID: 80291553}
   - {fileID: 1911501112}
+  - {fileID: 899917358}

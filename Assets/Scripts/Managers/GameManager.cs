@@ -11,14 +11,14 @@ public class GameManager : MonoBehaviour
     public int maxStage=2;
     public GameObject sceneManagerOBJ;
     public GameObject playerOBJ;
+    public PlayerState playerState;
     public static GameManager instance;
     public InputManagerBase inputManager;
     public SceneManagerBase sceneManager;
     public List<EquipItemBase> items= new List<EquipItemBase>();
-    public Dictionary<string, ActiveSkills> activeSkillData = new Dictionary<string, ActiveSkills>();
-    public Dictionary<string, FunctionBase> functions = new Dictionary<string, FunctionBase>();
-    public List<Dictionary<string, object>> skillData = new List<Dictionary<string, object>>();
+    public int totalGold;
     public int test;
+    public string language = "En";
     private void Awake()
     {
         if (GameManager.instance == null)
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Test();
-        ReadSkillData();
+
     }
     private void Update()
     {
@@ -54,37 +54,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void ReadSkillData()
-    {
-        string path = null;
-        path = "DataCSV\\SkillData";
-        skillData = CSVReader.Read(path);
-        for(int i =0; i < skillData.Count; i++)
-        {
-            string temp;
-            temp = skillData[i]["skillName"].ToString();
-            if (activeSkillData.ContainsKey(temp))
-            {
-                activeSkillData[temp]._BaseDamage = int.Parse(skillData[i]["BaseDamage"].ToString());
-                activeSkillData[temp].index = int.Parse(skillData[i]["index"].ToString());
-                activeSkillData[temp]._BaseAttackCycle = (float)(int.Parse(skillData[i]["attackCycle"].ToString()));
-                activeSkillData[temp]._BaseAttackRange = float.Parse(skillData[i]["attackRange"].ToString());
-                activeSkillData[temp]._BaseobjectSize = float.Parse(skillData[i]["objectSize"].ToString());
-                activeSkillData[temp]._BaseObjectNumber = int.Parse(skillData[i]["objectNumber"].ToString());
-                Debug.Log("ReadSuccec SkillName : "+temp);
-            }
-            else
-            {
-                Debug.Log("SkillNameError");
-            }
-
-
-        }
-    }
-    public void GetSkillData(string skillName)
-    {
-        
-    }
+    
 
     /*
     public void InGameSkillDataInitialize()

@@ -13,13 +13,12 @@ public class GameEventManager : MonoBehaviour
     private void Awake()
     {
         SetManagers();
-    }
-    void Start()
-    {
-
         GetManagers();
         SetGameStart();
         OnGameStart.Invoke();
+    }
+    void Start()
+    {
         InGameAddEvenet();
     }
     private void FixedUpdate()
