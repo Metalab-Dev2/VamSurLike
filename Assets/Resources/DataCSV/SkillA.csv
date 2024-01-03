@@ -1,0 +1,3 @@
+level,skillName,BaseDamage,attackCycle,attackRange,objectSize,objectNumber,function,DiscriptionEn,DiscriptionKr
+0,Around,1,1,1,1,1,damage_objectNumber,string,string
+1,Around,1,1,1,1,1,danage,string,string

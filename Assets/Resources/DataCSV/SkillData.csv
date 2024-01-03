@@ -1,3 +1,5 @@
 index,skillName,BaseDamage,attackCycle,attackRange,objectSize,objectNumber,function
 0,Slash,1,1,1,1,1,Slash
 1,Around,1,1,1,1,1,Around
+2,SkillA,1,1,1,1,1,Slash
+3,SkillB,1,1,1,1,1,Around
