@@ -390,6 +390,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0f2db2fc82b6e42a8330c66e8dd2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: 
 --- !u!1 &289157411
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +823,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0f2db2fc82b6e42a8330c66e8dd2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: 
 --- !u!1 &507416006
 GameObject:
   m_ObjectHideFlags: 0
@@ -1149,6 +1151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0f2db2fc82b6e42a8330c66e8dd2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: 
 --- !u!1 &593110849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1161,7 +1164,7 @@ GameObject:
   - component: {fileID: 593110852}
   - component: {fileID: 593110851}
   m_Layer: 5
-  m_Name: SkillSubScrib
+  m_Name: SkillDiscribe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1206,7 +1209,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SkillSubScrib
+  m_text: SkillDiscribe
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1479,10 +1482,12 @@ MonoBehaviour:
   grid: {fileID: 1921340249}
   monsterPrefab: {fileID: 1243476404553195057, guid: fb1ef9ffb79241646a8b4dfb573c31ad, type: 3}
   playerPrefab: {fileID: 3415419152516122027, guid: abc58cbb6f9504141b6de9d623064f6c, type: 3}
-  playerObj: {fileID: 0}
   playerPos: {x: 0, y: 0}
   lastGenTime: 0
   genTime: 0.2
+  levelUpPanel: {fileID: 0}
+  skillUpPanel: {fileID: 0}
+  infoPanel: {fileID: 0}
 --- !u!4 &720946599
 Transform:
   m_ObjectHideFlags: 0
@@ -1704,7 +1709,7 @@ GameObject:
   - component: {fileID: 1029406888}
   - component: {fileID: 1029406887}
   m_Layer: 5
-  m_Name: SkillSubScrib
+  m_Name: SkillDiscribe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1749,7 +1754,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SkillSubScrib
+  m_text: SkillDiscribe
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2266,7 +2271,7 @@ GameObject:
   - component: {fileID: 1654462311}
   - component: {fileID: 1654462310}
   m_Layer: 5
-  m_Name: SkillSubScrib
+  m_Name: SkillDiscribe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2311,7 +2316,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SkillSubScrib
+  m_text: SkillDiscribe
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2400,7 +2405,7 @@ GameObject:
   - component: {fileID: 1673997067}
   - component: {fileID: 1673997066}
   m_Layer: 5
-  m_Name: SkillSubScrib
+  m_Name: SkillDiscribe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2445,7 +2450,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SkillSubScrib
+  m_text: SkillDiscribe
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2868,6 +2873,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa0f2db2fc82b6e42a8330c66e8dd2f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  skillName: 
 --- !u!1 &1868526864
 GameObject:
   m_ObjectHideFlags: 0

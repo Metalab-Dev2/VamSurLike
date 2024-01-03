@@ -25,7 +25,27 @@ public class SkillUpButton : MonoBehaviour
 
     void SetButtonFunction()
     {
+        for(int i = 0; i < functions.Count; i++)
+        {
+            string separateString=null;
+            Separate(separateString);
+        }
+        //GameManager.instance.playerState.skillObjects[skillName]
+    }
 
+    void Separate(string saparateString)
+    {
+        switch (saparateString)
+        {
+
+            case "Add":
+                break;
+            case "Multi":
+                break;
+            default:
+                Debug.Log("SaparateError");
+                break;
+        }
     }
     void InitiateButton()
     {
@@ -65,10 +85,14 @@ public class SkillUpButton : MonoBehaviour
             skillDiscriptionText.text = skillData[0][key].ToString();
         }
     }
-
+    void SetFunctions()
+    {
+        string path = "DataCSV\\" + skillName;
+        string functions = skillData[skillLevel]["function"].ToString();
+        //저장한 펑션 특정 문자로 나눈 후 functionManager에서 function 함수를 가져올 필요 있음
+    }
     private void OnEnable()
     {
-
         buttonObj.transform.GetComponent<Button>().onClick.AddListener(SetButtonFunction);
     }
 

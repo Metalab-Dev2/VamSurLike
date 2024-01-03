@@ -10,6 +10,7 @@ public class PlayerState : LivingEntity
     public Dictionary<GameObject, float> hitObj;
     public Dictionary<string,ActiveSkills> skills = new Dictionary<string, ActiveSkills>();
     public GameObject skillObjectPrefab;
+    public Dictionary<string,GameObject> skillObjects = new Dictionary<string,GameObject>();
     int level;
     int maxEXP;
     int currentEXP;
