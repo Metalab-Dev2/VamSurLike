@@ -32,4 +32,16 @@ public class Main_Invecntory : MonoBehaviour
             go.transform.GetComponent<Slot>().item = this.items[i];
         }
     }
+    void AddItemData(EquipItemBase itemData)
+    {
+        items.Add(itemData);
+        
+    }
+    void RemoveItemData(EquipItemBase itemData)
+    {
+        if (items.Contains(itemData))
+        {
+            items.Remove(itemData);
+        }
+    }
 }

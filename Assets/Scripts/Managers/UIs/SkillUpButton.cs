@@ -93,12 +93,19 @@ public class SkillUpButton : MonoBehaviour
     }
     private void OnEnable()
     {
-        buttonObj.transform.GetComponent<Button>().onClick.AddListener(SetButtonFunction);
+        //buttonObj.transform.GetComponent<Button>().onClick.AddListener(SetButtonFunction);
     }
 
     private void OnDisable()
     {
-        skillData.Clear();
-        functions.Clear();
+        if (skillData.Count >= 1)
+        {
+            skillData.Clear();
+        }
+        if (functions.Count >= 1)
+        {
+            functions.Clear();
+        }
+        
     }
 }

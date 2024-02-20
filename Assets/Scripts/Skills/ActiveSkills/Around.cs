@@ -24,5 +24,4 @@ public class Around : ActiveSkills
             skillObject[i].transform.position = temp;
         }
     }
-
 }

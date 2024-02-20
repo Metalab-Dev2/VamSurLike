@@ -6,15 +6,14 @@ public class GenerateMap : MonoBehaviour
 {
     GameSceneManager gameSceneManager;
     // Start is called before the first frame update
-    NavMeshSurface mySurface;
-
+    
     void Start()
     {
         if(GameManager.instance.sceneManager is GameSceneManager&& gameSceneManager==null)
+        {
             gameSceneManager = (GameSceneManager)GameManager.instance.sceneManager;
+        }
 
-        mySurface = transform.GetComponent<NavMeshSurface>();
-        mySurface.BuildNavMesh();
     }
 
     // Update is called once per frame

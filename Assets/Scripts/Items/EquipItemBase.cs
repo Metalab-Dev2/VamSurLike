@@ -5,7 +5,7 @@ using UnityEngine;
 public class EquipItemBase
 {
     public int slot;
-    public string name;
+    public string itemName;
     public List<string> functions;
 
 }
